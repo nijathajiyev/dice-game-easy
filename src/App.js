@@ -7,14 +7,13 @@ class App extends Component {
     super();
 
     this.state = {
-      firstDice: "",
-      secondDice: "",
+      firstDice: dice1,
+      secondDice: dice1,
       btnName: "Roll Dice!",
       game: false,
     };
 
     this.startGame = this.startGame.bind(this);
-    this.myTime = this.myTime.bind(this);
   }
 
   startGame() {
@@ -26,17 +25,17 @@ class App extends Component {
     }
 
     this.setState({
-      firstDice: image[`dice${randomFirst}`],
-      secondDice: image[`dice${randomSecond}`],
       game: true,
       btnName: "Rolling...",
     });
-    this.myTime();
-  }
-
-  myTime() {
+    
     setTimeout(() => {
-      this.setState({ game: false, btnName: "Roll Dice!" });
+      this.setState({
+        game: false,
+        btnName: "Roll Dice!",
+        firstDice: image[`dice${randomFirst}`],
+        secondDice: image[`dice${randomSecond}`],
+      });
     }, 1000);
   }
 
@@ -46,17 +45,13 @@ class App extends Component {
         <div className="img-class">
           {this.state.game ? (
             <img className="img1" src={this.state.firstDice} width="200" />
-          ) : this.state.firstDice ? (
-            <img src={this.state.firstDice} width="200" />
           ) : (
-            <img src={dice1} width="200" />
+            <img src={this.state.firstDice} width="200" />
           )}
           {this.state.game ? (
             <img className="img1" src={this.state.secondDice} width="200" />
-          ) : this.state.secondDice ? (
-            <img src={this.state.secondDice} width="200" />
           ) : (
-            <img src={dice1} width="200" />
+            <img src={this.state.secondDice} width="200" />
           )}
         </div>
         <br />
