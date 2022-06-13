@@ -36,7 +36,7 @@ class App extends Component {
         firstDice: image[`dice${randomFirst}`],
         secondDice: image[`dice${randomSecond}`],
       });
-    }, 920);
+    }, 910);
   }
 
   render() {
